@@ -1,0 +1,21 @@
+{
+  "name": "test-assignment",
+  "version": "1.0.0",
+  "description": "Search page",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "--repository=https://github.com/its-me-amrit/Amritanshu-Chaudhary"
+  },
+  "keywords": [
+    "mern"
+  ],
+  "author": "Amritanshu",
+  "license": "MIT",
+  "dependencies": {
+    "react-scripts": "^5.0.1"
+  }
+}

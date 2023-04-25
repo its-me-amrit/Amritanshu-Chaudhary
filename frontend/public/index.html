@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Page</title>
+  </head>
+  <body>
+    <h1>Search Ads</h1>
+    <input type="text" placeholder="Enter search keyword" id="search-bar" />
+    <button type="button" id="search-btn">Search</button>
+    <div id="search-results"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#search-btn").click(function () {
+          var searchKeyword = $("#search-bar").val();
+
+          // send search keyword to server and get results
+          $.ajax({
+            type: "GET",
+            url: "/search",
+            data: { keyword: searchKeyword },
+            success: function (data) {
+              // display search results in grid format
+              var resultsHtml = "";
+              for (var i = 0; i < data.length; i++) {
+                var ad = data[i];
+                resultsHtml +=
+                  '<div class="ad">' +
+                  '<img src="' +
+                  ad.image +
+                  '" alt="' +
+                  ad.company +
+                  '">' +
+                  "<h3>" +
+                  ad.company +
+                  "</h3>" +
+                  "<p>" +
+                  ad.headline +
+                  "</p>" +
+                  "<p>" +
+                  ad.description +
+                  "</p>" +
+                  "</div>";
+              }
+              $("#search-results").html(resultsHtml);
+            },
+            error: function (error) {
+              console.log(error);
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
